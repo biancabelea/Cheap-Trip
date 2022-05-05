@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.container{
+  background-color:rgb(207, 230, 207);
+  padding: 8px 0 6px;
+}
+
+.cardGrid {
+  padding: 20px 0;
+}
+
+.card{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.cardMedia{
+  padding-top: 56.25%;
+}
+
+.cardContent{
+  flex-grow: 1;
+}
