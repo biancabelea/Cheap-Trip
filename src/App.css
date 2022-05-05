@@ -39,7 +39,7 @@
 
 .container{
   background-color:rgb(207, 230, 207);
-  padding: 8px 0 6px;
+  padding: 2px 0 2px;
 }
 
 .cardGrid {
@@ -59,4 +59,9 @@
 
 .cardContent{
   flex-grow: 1;
+}
+
+.footer{
+  background-color: transparent;
+  padding: 20px 0;
 }

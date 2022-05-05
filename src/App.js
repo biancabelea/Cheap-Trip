@@ -29,10 +29,10 @@ function App() {
         </Container>
         </div>
         <div>
-          <Container maxWidth="md" className='container'>
+          <Container maxWidth="lg" className='container'>
             <Grid container spacing={4} className="cardGrid">
-              {cards.map(() => (
-                <Grid item>
+              {cards.map((card) => (
+                <Grid item key={card} xs={12} sm={6} md={3}>
                 <Card className="card">
                   <CardMedia
                     className = "cardMedia"
@@ -57,6 +57,9 @@ function App() {
           </Container>
         </div>
       </main>
+      <footer className="footer">
+
+      </footer>
     </>
   );
 }
