@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './../Logo_Cheap_Trip.png';
 import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Button} from '@mui/material'
-import { PhotoCamera } from '@mui/icons-material';
+import AddIcon from '@mui/icons-material/Add';
+import { Fab } from '@mui/material';
 import './../App.css';
-import { Link} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 
 const cards=[1,2,3,4,5,6,7,8,9]
 
 function HomePage() {
+  let navigate = useNavigate();
     return (
       <>
         <CssBaseline />
@@ -17,7 +19,7 @@ function HomePage() {
           <Button variant="h6" padding="10px">
             Trips
           </Button>
-          <Button variant="h6" padding="10px">
+          <Button variant="h6" padding="10px" onClick={() => navigate('/Login')}>
             Login
           </Button>
           </Toolbar>
@@ -30,7 +32,7 @@ function HomePage() {
           
           </Container>
           </div>
-          <div>
+          <div position="fixed">
             <Container maxWidth="lg" className='container'>
               <Grid container spacing={4} className="cardGrid">
                 {cards.map((card) => (
@@ -46,25 +48,27 @@ function HomePage() {
                         Heading
                       </Typography>
                       <Typography>
-                        This is a media card. Here you will se the content.
+                        This is a media card. Here you will see the content.
                       </Typography>
                     </CardContent>
                     <CardActions>
-                      <Link to="/ViewPost" size="small" marginTop="50px" color="primary">View</Link>
+                      <Button onClick={() => navigate('/ViewPost')} size="small" marginTop="50px" color="primary">View</Button>
                     </CardActions>
                   </Card>
                 </Grid>
                 ))}
               </Grid>
+
             </Container>
           </div>
+          <div style={{ display: "flex" }}>
+          <Fab className="fab" color="error" style={{ marginLeft: "auto" }} onClick={() => navigate('/AddPost')} aria-label="add">
+                <AddIcon />
+          </Fab>
+        </div>
         </main>
-        <footer className="footer">
-  
-        </footer>
-      </>
-  
-      
+        <footer className="footer"></footer>
+      </>    
     );
   }
 

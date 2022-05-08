@@ -6,7 +6,7 @@ import ViewPost from "./component/ViewPost";
 import Login from "./component/Login";
 import Register from "./component/Register";
 import MyPosts from "./component/MyPosts";
-import AddPost from "./component/ViewPost";
+import AddPost from "./component/AddPost";
 
 class App extends Component {
   render() {
