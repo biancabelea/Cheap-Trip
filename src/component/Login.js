@@ -38,7 +38,7 @@ function Login (){
           </Toolbar>
         </AppBar>
         </div>
-        <main>
+        <main style={{backgroundImage: 'url(https://images.unsplash.com/photo-1632516643720-e7f5d7d6ecc9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1422&q=80)'}}>
           <div>
             <Container maxWidth="sm">
                 <Typography variant="h5" align="center" color="textPrimary" padding="30px 20px 0px" gutterBottom>Login</Typography>
@@ -46,7 +46,7 @@ function Login (){
             </Container>
           </div>
           <form>
-          <Container maxWidth="xs" className="container">
+          <Container maxWidth="xs" className="authForm">
               <Grid container>
                   <Grid item xs={12} padding="30px">
                     <TextField
@@ -60,6 +60,7 @@ function Login (){
                     <TextField
                         variant="filled"
                         label="Password"
+                        type="password"
                         name="password"
                         value={values.password}
                         onChange={handleInputChange}

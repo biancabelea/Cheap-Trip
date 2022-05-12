@@ -67,7 +67,7 @@ function HomePage() {
           </Fab>
         </div>
         </main>
-        <footer className="footer"></footer>
+        
       </>    
     );
   }
