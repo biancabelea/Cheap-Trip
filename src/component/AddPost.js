@@ -20,6 +20,28 @@ function AddPost() {
         });
     }
 
+    async function onSubmit(e) {
+        e.preventDefault();
+
+        // When a post request is sent to the create url, we'll add a new record to the database.
+        const newPost = { ...form };
+
+        await fetch("http://localhost:5000/record/add", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newPost),
+        })
+            .catch(error => {
+                window.alert(error);
+                return;
+            });
+
+        setForm({ title: "", location: "", price: "" , days: "", about: "",});
+        navigate("/");
+    }
+
     return (
         <div>
             <div><CssBaseline />
@@ -82,7 +104,7 @@ function AddPost() {
                     />
                 </Button>
                 <br></br>
-                <Button variant="contained" type="submit" padding="20px" color="primary" size="large">Add Post</Button>
+                <Button  onClick={onSubmit} variant="contained" type="submit" padding="20px" color="primary" size="large">Add Post</Button>
             </Container>
         </div>
     );
