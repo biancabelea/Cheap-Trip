@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import logo from './../Logo_Cheap_Trip.png';
 import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container, Button} from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
@@ -6,10 +6,30 @@ import { Fab } from '@mui/material';
 import './../App.css';
 import { Link, useNavigate} from 'react-router-dom';
 
-const cards=[1,2,3,4,5,6,7,8,9]
-
 function HomePage() {
   let navigate = useNavigate();
+  const [records, setRecords] = useState([]);
+ 
+  // This method fetches the records from the database.
+  useEffect(() => {
+    async function getRecords() {
+      const response = await fetch(`http://localhost:5000/record/`);
+  
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+  
+      const records = await response.json();
+      setRecords(records);
+    }
+  
+    getRecords();
+  
+    return;
+  }, [records.length]);
+  
     return (
       <>
         <CssBaseline />
@@ -35,8 +55,8 @@ function HomePage() {
           <div position="fixed">
             <Container maxWidth="lg" className='container'>
               <Grid container spacing={4} className="cardGrid">
-                {cards.map((card) => (
-                  <Grid item key={card} xs={12} sm={6} md={3}>
+                {records.map((record) => (
+                  <Grid item key={record._id} xs={12} sm={6} md={3}>
                   <Card className="card">
                     <CardMedia
                       className = "cardMedia"
@@ -45,10 +65,13 @@ function HomePage() {
                     />
                     <CardContent className="cardContent">
                       <Typography gutterBottom variant="h5">
-                        Heading
+                        {record.title}
                       </Typography>
                       <Typography>
-                        This is a media card. Here you will see the content.
+                        Location: {record.location} <br></br>
+                        Price: {record.price} <br></br>
+                        Days: {record.days} <br></br>
+                        About: {record.about} <br></br>
                       </Typography>
                     </CardContent>
                     <CardActions>
